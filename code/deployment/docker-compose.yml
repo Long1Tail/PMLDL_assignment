@@ -1,0 +1,42 @@
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: mlops_wine_api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_PATH=/app/models/model.joblib
+      - METADATA_PATH=/app/models/metadata.json
+    volumes:
+      - ../../models:/app/models:ro
+    networks:
+      - mlops_net
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: mlops_wine_app
+    restart: unless-stopped
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://api:8000
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - mlops_net
+
+networks:
+  mlops_net:
+    driver: bridge

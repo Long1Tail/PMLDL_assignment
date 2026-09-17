@@ -1,0 +1,50 @@
+{
+  "run_id": "ec9699b8646a41c1a3b891c77be30d85",
+  "experiment_name": "wine_quality_pipeline",
+  "model_file": "model.joblib",
+  "raw_feature_columns": [
+    "fixed_acidity",
+    "volatile_acidity",
+    "citric_acid",
+    "residual_sugar",
+    "chlorides",
+    "free_sulfur_dioxide",
+    "total_sulfur_dioxide",
+    "density",
+    "ph",
+    "sulphates",
+    "alcohol"
+  ],
+  "engineered_feature_columns": [
+    "fixed_acidity",
+    "volatile_acidity",
+    "citric_acid",
+    "residual_sugar",
+    "chlorides",
+    "free_sulfur_dioxide",
+    "total_sulfur_dioxide",
+    "density",
+    "ph",
+    "sulphates",
+    "alcohol",
+    "free_to_total_sulfur_ratio",
+    "bound_sulfur_dioxide",
+    "total_acidity",
+    "acid_to_sugar_ratio"
+  ],
+  "metrics": {
+    "accuracy": 0.7714285714285715,
+    "precision": 0.8235294117647058,
+    "recall": 0.7368421052631579,
+    "f1_score": 0.7777777777777778,
+    "roc_auc": 0.8468338815789475
+  },
+  "params": {
+    "model_type": "RandomForestClassifier",
+    "n_estimators": 100,
+    "max_depth": 10,
+    "random_state": 42,
+    "raw_features_count": 11,
+    "engineered_features_count": 15
+  }
+}

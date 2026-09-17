@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints
+
+# MLflow & SQLite
+mlruns/
+.trash/
+*.db
+*.sqlite3
+
+# Airflow logs
+services/airflow/logs/*
+!services/airflow/logs/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
